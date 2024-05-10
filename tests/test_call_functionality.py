@@ -123,9 +123,7 @@ class TestCallFunctions:
             priority=CallPriority.HIGH,
         )
 
-        registered_call.assign(
-            call_centre, min_seniority=EmployeeSeniorotyLevel.MANAGER
-        )
+        registered_call.assign(call_centre)
 
         assert len(call_centre.active_calls) == 1
         assert registered_call.assigned_to.seniority == EmployeeSeniorotyLevel.MANAGER

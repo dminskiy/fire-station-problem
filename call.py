@@ -53,14 +53,10 @@ class Call:
             f" | Assigned to: {self.assigned_to} | Duration: {self.duration_sec}"
         )
 
-    def assign(
-        self, call_centre, min_seniority: Optional[EmployeeSeniorotyLevel] = None
-    ):
+    def assign(self, call_centre):
         """
         Assign a call to the first applicable employee.
         If such employee is not found, add the call to the backlog.
-
-        min_seniority - lowest seniority level to be considered
         """
         if self.assigned_to is not None:
             raise ValueError("Cannnot assign a call that is already assigned")

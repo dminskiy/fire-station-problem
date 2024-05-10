@@ -10,13 +10,24 @@ MAX_CALL_INTERVAL_SEC = 2
 PROB_OF_HIGH_PRIORITY_CALL = 0.3
 
 
+def random_call_priority():
+    return random.choices(
+        [CallPriority.HIGH, CallPriority.LOW],
+        weights=[
+            PROB_OF_HIGH_PRIORITY_CALL,
+            1 - PROB_OF_HIGH_PRIORITY_CALL,
+        ],
+        k=1,
+    )[0]
+
+
 def main():
     fire_station_config = CallCentreConfig(
         juniors=5,
         seniors=3,
         managers=2,
         directors=2,
-        max_call_duration_sec=20,
+        max_call_duration_sec=15,
         call_escalation_prob=0.5,
     )
     faker = Faker()
@@ -27,7 +38,7 @@ def main():
     while True:
         # Simulate continous running of the system:
         # Check for completed calls & assign released resources
-        call_centre.review_active_calls()
+        call_centre.review_active_calls(verbose=True)
         call_centre.review_backlog()
 
         print(f"\n\n>>>> Time count: {time_count}")
@@ -35,14 +46,7 @@ def main():
         if time_count == next_call:
             call_centre.dispatch_call(
                 caller_name=faker.name(),
-                priority=random.choices(
-                    [CallPriority.HIGH, CallPriority.LOW],
-                    weights=[
-                        PROB_OF_HIGH_PRIORITY_CALL,
-                        1 - PROB_OF_HIGH_PRIORITY_CALL,
-                    ],
-                    k=1,
-                )[0],
+                priority=random_call_priority(),
                 verbose=True,
             )
             next_call = time_count + random.randint(1, MAX_CALL_INTERVAL_SEC)

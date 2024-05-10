@@ -3,8 +3,8 @@ import time
 
 from faker import Faker
 
-from call import CallPriority
-from call_centre import CallCentre, CallCentreConfig
+from src.call import CallPriority
+from src.call_centre import CallCentre, CallCentreConfig
 
 MAX_CALL_INTERVAL_SEC = 2
 PROB_OF_HIGH_PRIORITY_CALL = 0.3

@@ -76,7 +76,7 @@ class Call:
         if self.assigned_to is None:
             call_centre.call_backlog.append(self)
 
-    def end(self, call_centre, escalate: Optional[bool] = None):
+    def end(self, call_centre, escalate: Optional[bool] = None, verbose: bool = False):
         assigned_employee = self.assigned_to
         if assigned_employee is None:
             raise RuntimeError("Cannot end an unassigned call")
@@ -85,6 +85,11 @@ class Call:
         assigned_employee.is_free = True
 
         if self.priority == CallPriority.LOW and self._should_escalate(escalate):
+
+            if verbose:
+                print("\n!! Call Escalated !!")
+                print(self)
+
             self.priority = CallPriority.HIGH
             self.assign(call_centre)
 

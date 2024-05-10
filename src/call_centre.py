@@ -62,10 +62,12 @@ class CallCentre:
         call = self._register_call(caller_name, priority)
         call.assign(call_centre=self)
         if verbose:
-            print("\n !! New Call Received !!")
+            print("\n!! New Call Received !!")
             print(call)
 
-    def review_active_calls(self, escalate: Optional[bool] = None):
+    def review_active_calls(
+        self, escalate: Optional[bool] = None, verbose: bool = False
+    ):
         """
         Mimics end of chat
 
@@ -76,7 +78,7 @@ class CallCentre:
             call = self.active_calls[ind]
             if call.expired:
                 inds_to_remove.append(ind)
-                call.end(call_centre=self, escalate=escalate)
+                call.end(call_centre=self, escalate=escalate, verbose=verbose)
 
         # remove back to front to keep the order
         inds_to_remove.sort(reverse=True)

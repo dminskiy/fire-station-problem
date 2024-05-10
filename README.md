@@ -32,3 +32,41 @@ work as a simulation given a particular input and some random variables.
 timer). The system should be able then to consume these calls and allocate the
 corresponding employees. In case of all employees are busy, the system should
 put any call on hold till someone is available again.
+
+## Running
+- Virtual Environment:
+    - Built with Python 3.10. To replicate the venv run:
+    - `python3 -m venv venv`
+    - `cd venv/source/bin`
+    - `source activate`
+    - `cd ../..`
+    - `pip install -r requirements.txt`
+- See [Useful Commands](#useful-commands) to run tests
+- Simulation:
+    - `python run_simulation.py`
+
+## Useful Commands
+
+- Testing:
+    - `pytest --cov`
+    - `pytest --cov --cov-report=html`
+    - `coverage html`
+    - `mypy --no-namespace-packages --config-file mypy.ini src`
+
+- Linting:
+    - `black -l 88 src`
+
+- Requirements:
+    - `pip-compile requirements.in -o requirements.txt`
+    - `pip install -r requirements.txt`
+
+## Implementation Limitations
+
+- Inefficient Call Assignemt O(n)
+    - Currently doesnt account for assigned/not assigned, goes through all employees regardless to find a fit
+    - Solutions: (i) database filtering; (ii) 2 lists (free,available) - O(1)
+- Inefficient active calls review - iterative poping O(n)
+    - However, this functionality is just for mimicking, in reality should be managed when end of call is initiated by an agent
+- Missing:
+    - Docker
+    - CI/CD

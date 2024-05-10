@@ -16,8 +16,12 @@ faker==25.1.0
     # via -r requirements.in
 iniconfig==2.0.0
     # via pytest
+mypy==1.10.0
+    # via -r requirements.in
 mypy-extensions==1.0.0
-    # via black
+    # via
+    #   black
+    #   mypy
 packaging==24.0
     # via
     #   black
@@ -42,6 +46,9 @@ tomli==2.0.1
     # via
     #   black
     #   coverage
+    #   mypy
     #   pytest
 typing-extensions==4.11.0
-    # via black
+    # via
+    #   black
+    #   mypy

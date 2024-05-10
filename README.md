@@ -20,8 +20,8 @@ system to be picked up as a high-priority call.
 - All employees start with ‘free’ status. They change their status upon allocation and
 de-allocation of calls.
 - the employee status changes to ‘free’ whenever:
-- a call is finished,
-- OR a call is escalated from the employee to another employee
+    - a call is finished,
+    - OR a call is escalated from the employee to another employee
 
 ## The System:
 - Design the classes and data structures for this problem. Implement a call to

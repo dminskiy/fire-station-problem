@@ -63,10 +63,10 @@ put any call on hold till someone is available again.
 ## Implementation Limitations
 
 - Inefficient Call Assignemt O(n)
-    - Currently doesnt account for assigned/not assigned, goes through all employees regardless to find a fit
-    - Solutions: (i) database filtering; (ii) 2 lists (free,available) - O(1)
+    - Currently doesn't account for assigned/not assigned, goes through all employees to find a fit regardless of their status
+    - Solutions: (i) database filtering; (ii) 2 lists (free, available) - O(1)
 - Inefficient active calls review - iterative poping O(n)
-    - However, this functionality is just for mimicking, in reality should be managed when end of call is initiated by an agent
+    - However, this functionality is just for mimicking, in reality, should be managed when the end of a call is initiated by an agent
 - Missing:
     - Docker
     - CI/CD

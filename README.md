@@ -57,6 +57,7 @@ put any call on hold till someone is available again.
     - `black -l 88 src`
 
 - Requirements:
+    - `pip install pip-tools`
     - `pip-compile requirements.in -o requirements.txt`
     - `pip install -r requirements.txt`
 
